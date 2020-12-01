@@ -1,13 +1,25 @@
+import io.vavr.collection.List;
 import io.vavr.collection.SortedSet;
 import io.vavr.collection.Stream;
 import io.vavr.collection.TreeSet;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 
 public class Sample {
     public static void main(String[] args) {
-        myStream();
+        String[] works = {"programmer", "engineer", "manager"};
+        p(myJoin(works)); // programmer, engineer, manager
+        p(List.of(works).mkString(", ")); // programmer, engineer, manager
+    }
+
+    private static String myJoin(String... works) {
+        // List in vavr library
+        return List.of(works)
+                .intersperse(", ")
+                .foldLeft(new StringBuilder(), StringBuilder::append)
+                .toString();
     }
 
     private static void myStream() {
