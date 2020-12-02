@@ -1,17 +1,22 @@
+package archive;
+
 import io.vavr.collection.List;
 import io.vavr.collection.SortedSet;
 import io.vavr.collection.Stream;
 import io.vavr.collection.TreeSet;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 
 public class Sample {
     public static void main(String[] args) {
         String[] works = {"programmer", "engineer", "manager"};
-        p(myJoin(works)); // programmer, engineer, manager
-        p(List.of(works).mkString(", ")); // programmer, engineer, manager
+
+        // these are all the same results.
+        // programmer, engineer, manager
+        p(myJoin(works));
+        p(List.of(works).mkString(", "));
+        p(List.of(works).reduce((first, second) -> first + ", " + second));
     }
 
     private static String myJoin(String... works) {
