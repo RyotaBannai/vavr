@@ -6,6 +6,24 @@ import java.util.Arrays;
 
 public class Sample {
     public static void main(String[] args) {
+        mimicLIFO();
+    }
+
+    private static void mimicLIFO() {
+        List<String> list = createList();
+
+        // there are API methods for manipulating a stack such as peek(), pop() and push()
+        List<String> newList = list.pushAll(List.of("Python", "Javascript"));
+        p(newList); // pushAll methods push all before first element. // -> List(Javascript, Python, Java, Kotlin, Go, Scala, C++, Julia, Rust)
+
+        p(newList.peek()); // first element of list
+
+        List<String> anotherNewList = list.pop(); // remove first element
+        p(anotherNewList);
+        // -> last in first out. LIFO
+    }
+
+    private static void myGroupMethod() {
         List<String> list = createList();
         p(list.grouped(2).head()); // List(Java, Kotlin)
         p(list.groupBy(lang -> lang.charAt(0)));
