@@ -9,4 +9,9 @@ The playground for Vavr.
   - The front List contains the elements that are dequeued
   - the rear List contains the elements that are enqueued.
   - (This allows enqueue and dequeue operations to perform in O(1). When the front List runs out of elements, front and rear List's are swapped, and the rear List is reversed.)
-  
+#### Stream
+- A Stream is an implementation of `a lazy linked list` and `is quite different from java.util.stream.` Unlike java.util.stream, `the Vavr Stream stores data and is lazily evaluating next elements`.
+- Vavr Stream is immutable and `may be Empty or Cons`. 
+  - A `Cons` consists of `a head element` and `a lazy computed tail Stream`. 
+  - Unlike a List, for a Stream, `only the head element is kept in memory`. The tail elements are computed on demand.
+  - As opposed to Java 8 Stream API, Vavr's Stream is `a data structure` for storing a sequence of elements. Thus, it has methods like get(), append(), insert() and others for manipulating its elements.
