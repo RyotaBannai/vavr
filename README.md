@@ -15,3 +15,12 @@ The playground for Vavr.
   - A `Cons` consists of `a head element` and `a lazy computed tail Stream`. 
   - Unlike a List, for a Stream, `only the head element is kept in memory`. The tail elements are computed on demand.
   - As opposed to Java 8 Stream API, Vavr's Stream is `a data structure` for storing a sequence of elements. Thus, it has methods like get(), append(), insert() and others for manipulating its elements.
+- `Stream.empty`: represents the empty Stream.
+- `Stream.Cons`: represents a Stream containing one or more elements.
+- all of these equal. 
+  - `Stream.empty()`, `Stream.of()`, `List.Nil.instance()`
+  - `Stream.of(x)`, `new Cons<>(x, List.Nil.instance())`
+- other examples:   
+- `Stream.of(Object...)`, e.g.`Stream.of(1,2,3)`
+- `Stream.ofAll(Iterable)`, e.g. `Stream.ofAll(List.of(1,2,3))`
+- ? Stream.ofAll(<primitive array>), e.g. List.ofAll(1,2,3)
