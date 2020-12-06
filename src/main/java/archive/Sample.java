@@ -1,15 +1,25 @@
 package archive;
 
-import io.vavr.collection.List;
-import io.vavr.collection.SortedSet;
-import io.vavr.collection.Stream;
-import io.vavr.collection.TreeSet;
+import io.vavr.collection.*;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 
 public class Sample {
     public static void main(String[] args) {
+        myCharSeq();
+    }
+
+    private static void myCharSeq() {
+        CharSeq chars = CharSeq.of("vavr");
+        CharSeq newChars = chars.replace("v", "V");
+        p(newChars); // VaVr
+        p(chars.charAt(1)); // a
+        p(chars.mkString()); // vavr
+    }
+
+    private static void advancedUsage1() {
         String[] works = {"programmer", "engineer", "manager"};
 
         // these are all the same results.
@@ -46,7 +56,7 @@ public class Sample {
         p(xs); // TreeSet(1, 2, 3, 4, 5)
     }
 
-    private static void p(Object input) {
-        System.out.println(input);
+    private static void p(Object... inputs) {
+        Arrays.stream(inputs).forEach(System.out::println);
     }
 }
