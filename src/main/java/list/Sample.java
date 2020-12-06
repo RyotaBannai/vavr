@@ -3,10 +3,12 @@ package list;
 import io.vavr.collection.List;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Sample {
     public static void main(String[] args) {
         mimicLIFO();
+        // IntStream.range(1,10).boxed() // Java standard library // each boxed to an Integer
     }
 
     private static void mimicLIFO() {
