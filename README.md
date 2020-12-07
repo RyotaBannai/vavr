@@ -1,12 +1,13 @@
 # vavr
-The playground for Vavr.
-- [official docs](https://docs.vavr.io/)
-- `sorted sets is` backed by `binary tree structures`. `a sorted map` is `a sorted set containing key-value pairs and having an ordering for the keys`.
-- `HashMap` is backed by [`hash Array Mapped Trie(HAMT)`](http://lampwww.epfl.ch/papers/idealhashtrees.pdf) and HashSet is backed by `a HAMT containing key-key pairs`.
-
 ### References
 - [Vavr user guide](https://docs.vavr.io/)
 - [Guide to Collections API in Vavr. Functional data structures](https://www.baeldung.com/vavr-collections)
+### Overview of vavr
+- ![Vavr's three basic building blocks](./public/img/vavr-overview.png)
+### Note
+- [official docs](https://docs.vavr.io/)
+- `sorted sets is` backed by `binary tree structures`. `a sorted map` is `a sorted set containing key-value pairs and having an ordering for the keys`.
+- `HashMap` is backed by [`hash Array Mapped Trie(HAMT)`](http://lampwww.epfl.ch/papers/idealhashtrees.pdf) and HashSet is backed by `a HAMT containing key-key pairs`.
 
 #### Queue
 - A Queue internally consists of `two linked lists`, `a front List`, and `a rear List`. 
