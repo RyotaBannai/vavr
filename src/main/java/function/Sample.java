@@ -16,6 +16,7 @@ public class Sample {
     public static void main(String[] args) {
         myComposition();
         myLifting();
+        myCurrying();
     }
 
     /**
@@ -26,7 +27,7 @@ public class Sample {
         Function1<Integer, Integer> plusOne = x -> x + 1;
         Function1<Integer, Integer> multiplyByTwo = x -> x * 2;
         Function1<Integer, Integer> add1AndMultiplyBy2 = plusOne.andThen(multiplyByTwo);
-        Function1<Integer, Integer> lessIntuitiveWayOfAdd1AndMultiplyBy2 = multiplyByTwo.compose(plusOne); // the same as above.
+        Function1<Integer, Integer> lessIntuitiveWayOfAdd1AndMultiplyBy2 = multiplyByTwo.compose(plusOne); // the same as above. // but looks like real function composition.
 
         p(add1AndMultiplyBy2.apply(1)); // 4
     }
@@ -57,16 +58,29 @@ public class Sample {
         // end of PA
     }
 
-    private static void myCurrying() {
-
-    }
-
     // custom function in real world for lifting.
     private static int sum(int first, int second) {
         if (first < 0 || second < 0) {
             throw new IllegalArgumentException("Only positive integers are allowed.");
         }
         return first + second;
+    }
+
+    /**
+     * Currying is a technique to partially apply a function by fixing a value for one of the parameters,
+     * resulting in a Function1 function that returns a Function1
+     * *
+     * When a Function2 is curried, the result is indistinguishable from the partial application of a Function2,
+     * because both result in a 1 arity function.
+     * *
+     * An arity function: one or more of arguments are taken by function
+     * -> 1 arity function = one argument is taken by function.
+     */
+    private static void myCurrying() {
+        Function2<Integer, Integer, Integer> sum = (first, second) -> first + second;
+        Function1<Integer, Integer> add2 = sum.curried().apply(2); // 1 arity function.
+
+        p(add2.apply(2)); // 4
     }
 
     private static void p(Object... inputs) {
