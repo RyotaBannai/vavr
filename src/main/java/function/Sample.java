@@ -1,5 +1,6 @@
 package function;
 
+import io.vavr.Function0;
 import io.vavr.Function1;
 import io.vavr.Function2;
 import io.vavr.control.Option;
@@ -17,6 +18,7 @@ public class Sample {
         myComposition();
         myLifting();
         myCurrying();
+        myMemorization();
     }
 
     /**
@@ -81,6 +83,17 @@ public class Sample {
         Function1<Integer, Integer> add2 = sum.curried().apply(2); // 1 arity function.
 
         p(add2.apply(2)); // 4
+    }
+
+    private static void myMemorization() {
+        // Function0 takes zero argument and return one result, just like Consumer.
+        Function0<Double> hashCache = Function0.of(Math::random).memoized();
+        double randomValue1 = hashCache.apply();
+        double randomValue2 = hashCache.apply();
+
+        // These are the same value.
+        p(randomValue1);
+        p(randomValue2);
     }
 
     private static void p(Object... inputs) {
