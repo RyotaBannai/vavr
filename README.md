@@ -29,3 +29,9 @@
 - `Stream.of(Object...)`, e.g.`Stream.of(1,2,3)`
 - `Stream.ofAll(Iterable)`, e.g. `Stream.ofAll(List.of(1,2,3))`
 - ? Stream.ofAll(<primitive array>), e.g. List.ofAll(1,2,3)
+
+#### Values
+- If you’re coming to Vavr after using Java’s `Optional` class, there is a crucial difference. 
+  - In Optional, a call to `.map` that results in a `null` will result in `an empty Optional`. 
+  - In Vavr, it would result in a `Some(null)` that can then lead to a `NullPointerException`.
+  
