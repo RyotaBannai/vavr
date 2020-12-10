@@ -1,5 +1,7 @@
 package values;
 
+import io.vavr.Function0;
+import io.vavr.Lazy;
 import io.vavr.control.Try;
 
 import java.util.Arrays;
@@ -31,5 +33,23 @@ public class myTry {
     private static void p(Object... inputs) {
         Arrays.stream(inputs).forEach(System.out::print);
         System.out.println("");
+    }
+
+    /**
+     * While `memorization` is used to memo an evaluated value,
+     * `lazy` is used to postpone an evaluation until it's actually used.
+     */
+    private static void lazyAndMemorization() {
+        // memorization
+        Function0<Double> hashCache = Function0.of(Math::random).memoized();
+        double randomValue1 = hashCache.apply();
+        double randomValue2 = hashCache.apply();
+
+        // lazy
+        Lazy<Double> lazy = Lazy.of(Math::random);
+        lazy.isEvaluated(); // = false
+        lazy.get();         // = 0.123 (random generated)
+        lazy.isEvaluated(); // = true
+        lazy.get();
     }
 }
