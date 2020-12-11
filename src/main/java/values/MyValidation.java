@@ -39,8 +39,6 @@ public class MyValidation {
                     ? Validation.invalid("Age must be at least " + MIN_INT)
                     : Validation.valid(age);
         }
-
-
     }
 
     private class Person {
