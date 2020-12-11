@@ -9,7 +9,7 @@ import java.util.Arrays;
 import static io.vavr.API.*;
 import static io.vavr.Predicates.*;
 
-public class myTry {
+public class MyTry {
     public static void main(String[] args) {
         tryAndRecover();
     }

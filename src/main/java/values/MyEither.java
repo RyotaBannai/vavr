@@ -10,7 +10,7 @@ import java.util.Arrays;
  * ・the Left signifies a failure case result and,
  * ・the Right signifies a success.
  */
-public class myEither {
+public class MyEither {
     public static void main(String[] args) {
         playWithEither();
         wowWithEither();
