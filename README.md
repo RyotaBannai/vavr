@@ -2,6 +2,9 @@
 ### References
 - [Vavr user guide](https://docs.vavr.io/)
 - [Guide to Collections API in Vavr. Functional data structures](https://www.baeldung.com/vavr-collections)
+- vavr blog:
+  - [Option](http://blog.vavr.io/the-agonizing-death-of-an-astronaut/) 
+  - [Try](http://blog.vavr.io/vavr-one-log-02/)
 ### Overview of vavr
 - ![Vavr's three basic building blocks](./public/img/vavr-overview.png)
 ### Note

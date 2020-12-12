@@ -23,17 +23,17 @@ public class MyPatterns {
             (Double first, Double second) -> Option.of(first / second);
 
     private static void myPatterns() {
-        Either<Option<Double>, Throwable> matchResult =
-                Match(Try.of(() -> divide.apply(1.0, 0.0))).of(
-                        Case($Failure($(instanceOf(ArithmeticException.class))), Either::right), // この段階で Some(Infinity) だから Error にはマッチしない.
+        Either<Double, Throwable> matchResult =
+                Match(Try.of(() -> 1.0 / 0.0)).of(
+                        Case($Failure($()), Either::right),
                         Case($Success($()), Either::left));
-        p(matchResult);  // Left(Some(Infinity))
+        p(matchResult);  // Left(Infinity) // why..?
     }
 
     private static void tryAndRecover() {
         Try<Option<Double>> result = Try.of(() -> divide.apply(1.0, 0.0))
                 .recover(x -> Match(x).of(
-                        Case($(instanceOf(ArithmeticException.class)), t -> Option.of(0.0))));
+                        Case($(instanceOf(ArithmeticException.class)), t -> Option.of(0.0)))); // この段階で Some(Infinity) だから Error にはマッチしない.
         p(result);  // Success(Some(Infinity))
     }
 
